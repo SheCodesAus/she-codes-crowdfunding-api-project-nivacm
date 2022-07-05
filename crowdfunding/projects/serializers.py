@@ -3,14 +3,15 @@ from django.forms import CharField
 from rest_framework import serializers
 from .models import Project, Pledge
 
+
 class PledgeSerializer(serializers.Serializer):
     id = serializers.ReadOnlyField()
     amount = serializers.IntegerField()
     comment = serializers.CharField(max_length=200)
     anonymous = serializers.BooleanField()
-    supporter = serializers.CharField(max_length=200)
+    supporter = serializers.ReadOnlyField(source='supporter.id')
     project_id = serializers.IntegerField()
-
+    
     def create(self, validated_data):
         return Pledge.objects.create(**validated_data)
 
