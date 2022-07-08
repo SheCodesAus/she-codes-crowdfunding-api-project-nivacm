@@ -1,7 +1,7 @@
 from unittest.util import _MAX_LENGTH
 from django.forms import CharField
 from rest_framework import serializers
-from .models import Project, Pledge
+from .models import Project, Pledge, Pledges_types
 
 
 class PledgeSerializer(serializers.Serializer):

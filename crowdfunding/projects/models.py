@@ -1,6 +1,10 @@
 from django.contrib.auth import get_user_model
 from django.db import models
-
+Pledges_types=[
+    ('$', 'Money'),
+    ( 'S', 'Art Supplies'),
+    ('O','Other')
+]
 class Pledge(models.Model):
     amount = models.IntegerField()
     comment = models.CharField(max_length=200)

@@ -13,12 +13,12 @@ class CustomUserList(APIView):
         return Response(serializer.data)
         
 
-def post(self, request):
-    serializer = CustomUserSerializer(data=request.data)
-    if serializer.is_valid():
-        serializer.save()
-        return Response(serializer.data)
-    return Response(serializer.errors)
+    def post(self, request):
+        serializer = CustomUserSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors)
     
 
 class CustomUserDetail(APIView):
@@ -28,7 +28,7 @@ class CustomUserDetail(APIView):
         except CustomUser.DoesNotExist:
             raise Http404
         
-def get(self, request, pk):
-    user = self.get_object(pk)
-    serializer = CustomUserSerializer(user)
-    return Response(serializer.data)
+    def get(self, request, pk):
+        user = self.get_object(pk)
+        serializer = CustomUserSerializer(user)
+        return Response(serializer.data)
