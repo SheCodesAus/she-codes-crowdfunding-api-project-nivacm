@@ -6,6 +6,7 @@ from .models import Project, Pledge, Pledges_types
 
 class PledgeSerializer(serializers.Serializer):
     id = serializers.ReadOnlyField()
+    type = serializers.ChoiceField(choices=Pledges_types)
     amount = serializers.IntegerField()
     comment = serializers.CharField(max_length=200)
     anonymous = serializers.BooleanField()
@@ -40,6 +41,6 @@ class ProjectDetailSerializer(ProjectSerializer):
         instance.date_created = validated_data.get('date_created',instance.date_created)
         instance.owner = validated_data.get('owner', instance.owner)
         instance.save()
-        return 
+        return instance
         
     
