@@ -40,4 +40,6 @@ class ProjectDetailSerializer(ProjectSerializer):
         instance.date_created = validated_data.get('date_created',instance.date_created)
         instance.owner = validated_data.get('owner', instance.owner)
         instance.save()
-        return instance
+        return 
+        
+    
