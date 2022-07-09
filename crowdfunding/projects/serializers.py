@@ -1,5 +1,17 @@
 from rest_framework import serializers
-from .models import Project, Pledge, Pledges_types
+from .models import Project, Pledge
+
+class PledgeSerializer(serializers.Serializer):
+    id = serializers.ReadOnlyField()
+    # type = serializers.ChoiceField(choices=Pledges_types)
+    amount = serializers.IntegerField()
+    comment = serializers.CharField(max_length=200)
+    anonymous = serializers.BooleanField()
+    supporter = serializers.ReadOnlyField(source='supporter.id')
+    project_id = serializers.IntegerField()
+    
+    def create(self, validated_data):
+        return Pledge.objects.create(**validated_data)
 class ProjectSerializer(serializers.Serializer):
     id = serializers.ReadOnlyField()
     title = serializers.CharField(max_length=200)
@@ -13,17 +25,7 @@ class ProjectSerializer(serializers.Serializer):
     def create(self, validated_data):
         return Project.objects.create(**validated_data)
 
-class PledgeSerializer(serializers.Serializer):
-    id = serializers.ReadOnlyField()
-    type = serializers.ChoiceField(choices=Pledges_types)
-    amount = serializers.IntegerField()
-    comment = serializers.CharField(max_length=200)
-    anonymous = serializers.BooleanField()
-    supporter = serializers.ReadOnlyField(source='supporter.id')
-    project_id = serializers.IntegerField()
-    
-    def create(self, validated_data):
-        return Pledge.objects.create(**validated_data)
+
 
 class ProjectDetailSerializer(ProjectSerializer):
     pledges = PledgeSerializer(many=True, read_only=True)
@@ -50,7 +52,7 @@ class PledgeDetailSerializer(PledgeSerializer):
         instance.anonymous = validated_data.get('anonymous', instance.anonymous)
         instance.project = validated_data.get('project', instance.project)
         instance.supporter = validated_data.get('supporter', instance.supporter)
-        instance.type = validated_data.get('type', instance.type)
+        # instance.type = validated_data.get('type', instance.type)
         instance.save()
         return instance
 

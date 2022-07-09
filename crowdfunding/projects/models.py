@@ -1,11 +1,11 @@
 from django.db import models
 from django.contrib.auth import get_user_model
 
-Pledges_types = [
-    ('$', 'Money'),
-    ( 'S', 'Art Supplies'),
-    ('O','Other')
-]
+# Pledges_types = [
+#     ('$', 'Money'),
+#     ( 'S', 'Art Supplies'),
+#     ('O','Other')
+# ]
 
 class Project(models.Model):
     title = models.CharField(max_length=200)
