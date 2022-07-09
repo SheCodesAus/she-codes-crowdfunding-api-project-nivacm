@@ -1,34 +1,5 @@
-from unittest.util import _MAX_LENGTH
-from wsgiref import validate
-from django.forms import CharField
 from rest_framework import serializers
 from .models import Project, Pledge, Pledges_types
-
-
-class PledgeSerializer(serializers.Serializer):
-    id = serializers.ReadOnlyField()
-    type = serializers.ChoiceField(choices=Pledges_types)
-    amount = serializers.IntegerField()
-    comment = serializers.CharField(max_length=200)
-    anonymous = serializers.BooleanField()
-    supporter = serializers.ReadOnlyField(source='supporter.id')
-    project_id = serializers.IntegerField()
-    
-    def create(self, validated_data):
-        return Pledge.objects.create(**validated_data)
-
-class PledgeDetailSerializer(PledgeSerializer):
-
-    def update(self, instance, validated_data):
-        instance.amount = validated_data.get('amount', instance.amount)
-        instance.comment = validated_data.get('comment', instance.comment)
-        instance.anonymous = validated_data.get('anonymous', instance.anonymous)
-        instance.project = validated_data.get('project', instance.project)
-        instance.supporter = validated_data.get('supporter', instance.supporter)
-        instance.type = validated_data.get('type', instance.type)
-        instance.save()
-        return instance
-
 class ProjectSerializer(serializers.Serializer):
     id = serializers.ReadOnlyField()
     title = serializers.CharField(max_length=200)
@@ -41,6 +12,18 @@ class ProjectSerializer(serializers.Serializer):
 
     def create(self, validated_data):
         return Project.objects.create(**validated_data)
+
+class PledgeSerializer(serializers.Serializer):
+    id = serializers.ReadOnlyField()
+    type = serializers.ChoiceField(choices=Pledges_types)
+    amount = serializers.IntegerField()
+    comment = serializers.CharField(max_length=200)
+    anonymous = serializers.BooleanField()
+    supporter = serializers.ReadOnlyField(source='supporter.id')
+    project_id = serializers.IntegerField()
+    
+    def create(self, validated_data):
+        return Pledge.objects.create(**validated_data)
 
 class ProjectDetailSerializer(ProjectSerializer):
     pledges = PledgeSerializer(many=True, read_only=True)
@@ -57,3 +40,18 @@ class ProjectDetailSerializer(ProjectSerializer):
         return instance
         
     
+
+
+
+class PledgeDetailSerializer(PledgeSerializer):
+    def update(self, instance, validated_data):
+        instance.amount = validated_data.get('amount', instance.amount)
+        instance.comment = validated_data.get('comment', instance.comment)
+        instance.anonymous = validated_data.get('anonymous', instance.anonymous)
+        instance.project = validated_data.get('project', instance.project)
+        instance.supporter = validated_data.get('supporter', instance.supporter)
+        instance.type = validated_data.get('type', instance.type)
+        instance.save()
+        return instance
+
+
