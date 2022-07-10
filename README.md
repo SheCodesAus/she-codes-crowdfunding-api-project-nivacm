@@ -106,7 +106,7 @@ An opportunity to reinterpret migration as a creative and positive experience th
 | GET    | /projects/   | Returns all project   |              |        200               | n/a                          |
 
 | Post   | /projects/   | Create a new project  | Project object     |        201          | Bearer Token                 |
-
+| ------ | -----------  | ------------- | ------------ | ------------------------ | ---------------------------- | 
 | get    | /users/1/    | View user  profile ID "1"   | User  objet  |        200          | n/a                          |
 
 | Post   | /users/      | Create a new  user | User object         |        201             | n/a                      |
