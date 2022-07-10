@@ -99,36 +99,29 @@ An opportunity to reinterpret migration as a creative and positive experience th
     username: patribelen
     password: 123123pat12
 
+<!-- TABLE_GENERATE_START -->
  
 | Method | URL          | Purpose       | Request body | Successful Response Code | Authorisation/Authentication |
 | ------ | -----------  | ------------- | ------------ | ------------------------ | ---------------------------- | 
-| GET    | /projects/   | Returns all   |              |        200               | n/a                          |
-|        |              | project       |              |                          |                              |
+| GET    | /projects/   | Returns all project   |              |        200               | n/a                          |
 | ------ | ----------   | ------------- | ------------ | ------------------------ | ---------------------------- | 
-| Post   | /projects/   | Create a new  | Project      |        201               | Bearer Token                 |
-|        |              | project       | object       |                          |                              |
+| Post   | /projects/   | Create a new project  | Project object     |        201          | Bearer Token                 |
 | ------ | ----------   | ------------- | ------------ | -----------------------  | ---------------------------- | 
-| get    | /users/1/    | View user     | User         |        200               | n/a                          |
-|        |              | profile ID "1"| object       |                          |                              |
+| get    | /users/1/    | View user  profile ID "1"   | User  objet  |        200          | n/a                          |
 | ------ | ----------   | ------------- |------------- |------------------------- | ---------------------------- | 
-| Post   | /users/      | Create a new  | User         |        201               | n/a                          |
-|        |              | user          | object       |                          |                              |
+| Post   | /users/      | Create a new  user | User object         |        201             | n/a                      |
 | ------ | ----------   | ------------- | -----------  | ------------------------ |----------------------------  |
-| Put    | /projects/1/ | Update the    | n/a          |        200               | Bearer Token                 |
-|        |              | project ID"1" |              |                          |                              |
+| Put    | /projects/1/ | Update the  project ID "1"   | n/a          |        200              | Bearer Token            |
 | ------ | ----------   | ------------- | ------------ | ------------------------ | ---------------------------- |
 | get    | /pledges/    | All pledges   |              |        200               | n/a                          |
-|        |              |               |              |                          |                              |
 | ------ |  ---------   | --------------| ------------ | ------------------------ | ---------------------------- | 
-| Post   | /pledges/    | Create a new  | Pledge       |        201               | n/a                          |
-|        |              | pledge        | object       |                          |                              |
+| Post   | /pledges/    | Create a new pledge  | Pledge       |        201               | n/a                          |
 | -------|-----------   |---------------|------------- |------------------------  | ---------------------------- |
-|Put     |/pledges/1/   | Update the    | n/a          |        200               |Bearer Token                  |
-|        |              | pledge  ID "1"|              |                          |                              |
+|Put     |/pledges/1/   | Update the pledge  ID "1"   | n/a          |        200          |Bearer Token                  |
 |------- |-----------   | ------------- |------------- | -------------------------| ---------------------------- |
-| Delete |/pledges/1/   | Deletes the   | n/a          |        200               | Bearer Token                 |
-|        |              |pledge  ID "1" |              |                          |                              |
+| Delete |/pledges/1/   | Deletes the pledge ID "1"  | n/a          |        200           | Bearer Token                 |
 
+<!-- TABLE_GENERATE_END -->
 
 # Do you want to register a new user?
 
@@ -150,7 +143,7 @@ Select now SEND. If all the parameters are corrects you will obtain a 201 create
 # Do you want to create a Project?
 First you need to be login in your account. For that, you need to create a POST request on the https://desolate-meadow-66943.herokuapp.com/api-token-auth/ to obtain your authentication token. You need to put the next code into the Body and selecting JSON.
 
-'''
+'''JSON
 {
     "username": "solcito",
     "password": "stringsolcito",
@@ -162,7 +155,7 @@ Then hit SEND. Copy the Token founded. Create a new POST request, but first make
 https://desolate-meadow-66943.herokuapp.com/projects/.
  Same as before in the body of the POST request select JSON. Enter the following code:
 
- '''
+ '''JSON
  {
 	"title": "Reflexion",
 	"description": "Reflexion of migration.",
@@ -172,3 +165,4 @@ https://desolate-meadow-66943.herokuapp.com/projects/.
 	"date_created": "2022-04-2T14:28:23.382748Z",
 	"owner": "Real Creator"
  }
+ '''
