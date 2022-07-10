@@ -101,10 +101,10 @@ An opportunity to reinterpret migration as a creative and positive experience th
 
 <!-- TABLE_GENERATE_START -->
  
-| Method | URL          | Purpose       | Request body | Successful Response Code | Authorisation/Authentication |
-| ------ | -----------  | ------------- | ------------ | ------------------------ | ---------------------------- | 
+| Method | URL          | Purpose                |  Request body  | Successful Response Code |    Authorisation/Authentication                           |
+|------ | -----------  | ---------------------- | ------------ | ------------------------ | ---------------------------- | 
 | GET    | /projects/   | Returns all project   |              |        200               | n/a                          |
-| ------ | -----------  | ------------- | ------------ | ------------------------ | ---------------------------- | 
+
 | Post   | /projects/   | Create a new project  | Project object     |        201          | Bearer Token                 |
 | ------ | -----------  | ------------- | ------------ | ------------------------ | ---------------------------- | 
 | get    | /users/1/    | View user  profile ID "1"   | User  objet  |        200          | n/a                          |
