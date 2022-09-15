@@ -1,5 +1,6 @@
 
-from django.http import Http404, HttpResponseBadRequest
+from django.http import HttpResponseBadRequest
+from wsgiref import validate
 from rest_framework import serializers
 from .models import CustomUser
 from django.contrib.auth.hashers import make_password
