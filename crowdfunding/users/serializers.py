@@ -13,12 +13,10 @@ class CustomUserSerializer(serializers.Serializer):
     password = serializers.CharField()
     image = serializers.URLField(max_length=300, default='https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png')
     bio = serializers.CharField(default="Bio")
+
     def create(self, validated_data):
-        try:
-            validated_data['password'] = make_password(validated_data['password'])
-            return CustomUser.objects.create(**validated_data)
-        except KeyError:
-            raise HttpResponseBadRequest
+        return CustomUser.objects.create(**validated_data)
+    
 
     
     def update(self, instance, validated_data):

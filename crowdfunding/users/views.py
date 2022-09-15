@@ -40,7 +40,7 @@ class CustomUserDetail(APIView):
 
     def put(self, request, pk):
         user = self.get_object(pk)
-        if user ==  request.user:
+        if user == request.user:
             data = request.data
             serializer = CustomUserSerializer(
             instance=user,
