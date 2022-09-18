@@ -5,6 +5,7 @@ from rest_framework.response import Response
 from rest_framework import status
 from .models import CustomUser
 from .serializers import CustomUserSerializer
+
 ###########
 # Creation of a user profile. No authentication required.
 ###########
@@ -27,6 +28,7 @@ class CustomUserList(APIView):
 ##########  
 
 class CustomUserDetail(APIView):
+
     def get_object(self, pk):
         try:
             return CustomUser.objects.get(pk=pk)

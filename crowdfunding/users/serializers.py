@@ -15,7 +15,7 @@ class CustomUserSerializer(serializers.Serializer):
     bio = serializers.CharField(default="Bio")
 
     def create(self, validated_data):
-        return CustomUser.objects.create(**validated_data)
+        return CustomUser.objects.create_user(**validated_data)
     
 
     
