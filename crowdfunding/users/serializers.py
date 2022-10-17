@@ -12,9 +12,10 @@ class CustomUserSerializer(serializers.Serializer):
     email = serializers.CharField(max_length=200)
     password = serializers.CharField()
     image = serializers.URLField(max_length=300, default='https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png')
-    bio = serializers.CharField(default="Bio")
+    bio = serializers.CharField(max_length=500)
 
     def create(self, validated_data):
+        
         return CustomUser.objects.create_user(**validated_data)
     
 
